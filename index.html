@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Tracker</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+    <style>
+        input:focus {
+            outline: none;
+            border-color: #1B3A4B;
+            box-shadow: 0 0 0 2px #1B3A4B;
+        }
+        #water-level {
+            height: 0%; /* Ensure initial height is set */
+            transition: height 0.5s ease-in-out;
+        }
+
+        /* Styles for the raindrops */
+        .raindrop {
+            position: absolute;
+            width: 5px;
+            height: 20px;
+            background-color: rgba(54, 164, 201, 0.7);
+            border-radius: 50%;
+            bottom: 100%;
+        }
+    </style>
+</head>
+<body class="bg-cover bg-no-repeat" style="background-image: url(./water\ droplets\ background.jpg);">
+    <h1 class="m-auto w-fit text-[#1B3A4B] text-[4rem] font-[600] my-10 ">Set a Goal, Stay on Track.</h1>
+    
+    <section class="m-auto shadow-lg bg-[#FFFFFF] w-[50rem] h-[28rem] rounded-3xl flex">
+        <div class="w-[50%] rounded-[10px] border-r-[0.6rem] border-solid border-r-[#1B3A4B] flex flex-col space-y-[3rem]">
+            <div class="w-fit my-auto flex flex-col space-y-[2rem]  px-10">
+                <img src="./logo.jpg" alt="water tracker logo" class="w-[8rem] m-auto">
+                <label for="number" class="text-[#275362] text-[1.5rem] font-[500] text-center">Set Your Daily Water Goal (in cups):</label>
+                <input type="number" id="goal" name="number" class="bg-[#36a4c9] w-[15rem] h-[3rem] rounded-xl m-auto text-[1rem] text-white">
+            </div>
+        </div>
+        <div class="relative px-10 mx-auto">
+            <div class="relative h-[18rem] w-[12rem] rounded-full bg-blue-200 flex items-end justify-center overflow-hidden" style="clip-path: ellipse(50% 75% at 50% 100%);">
+                <!-- Water Level -->
+                <div id="water-level" class="absolute bottom-0 bg-blue-500 w-full"></div>
+            </div>
+            <p id="water-percentage" class="mt-4 text-xl font-semibold w-fit text-[#275362] mx-auto">0% Complete</p>
+            <button onclick="addWater()" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg  w-fit mx-[2rem]">Drink Water</button>
+        </div>
+    </section>
+    <!-- Container for Rain Animation -->
+    <div id="rain-container" class="absolute inset-0 pointer-events-none"></div>
+
+    <!-- Audio for celebration sound -->
+    <audio id="celebration-sound" src="./Maher Zain - One Day.mp3" preload="auto"></audio>
+    <script src="./script.js"></script>
+</body>
+</html>
